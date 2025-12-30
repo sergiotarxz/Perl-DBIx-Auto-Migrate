@@ -15,6 +15,7 @@ my $build = Module::Build->new(
         'Test::Exception'  => 0,
         'Test::PostgreSQL' => 0,
         'Test::More'       => 0,
+	'DBD::Pg' => 0,
     },
     meta_merge => {
         resources => {
