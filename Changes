@@ -6,3 +6,5 @@
 	- Fixing extra typo in the docs
 0.4 Mon Dec 29 06:53:18 PM CET 2025
 	- Adding an example project using this code.
+0.5 Tue Dec 30 08:43:48 PM CET 2025
+	- DBD::Pg is needed for tests.
