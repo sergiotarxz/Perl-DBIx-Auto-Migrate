@@ -82,6 +82,8 @@ my way to apply database migrations defined in code in a extensible way.
 
 It is only possible to migrate forward so be careful.
 
+To check an example project that uses this code you can check [https://github.com/sergiotarxz/Perl-App-RSS-Social](https://github.com/sergiotarxz/Perl-App-RSS-Social)
+
 # SUBS TO IMPLEMENT IN YOUR OWN DATABASE WRAPPER
 
 ## migrations

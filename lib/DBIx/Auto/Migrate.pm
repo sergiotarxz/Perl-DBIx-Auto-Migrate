@@ -1,6 +1,6 @@
 package DBIx::Auto::Migrate;
 
-our $VERSION = "0.3";
+our $VERSION = "0.4";
 
 use v5.16.3;
 use strict;
@@ -214,6 +214,8 @@ it is time to stop copying logic like this between projects and make public
 my way to apply database migrations defined in code in a extensible way.
 
 It is only possible to migrate forward so be careful.
+
+To check an example project that uses this code you can check L<https://github.com/sergiotarxz/Perl-App-RSS-Social>
 
 =head1 SUBS TO IMPLEMENT IN YOUR OWN DATABASE WRAPPER
 
