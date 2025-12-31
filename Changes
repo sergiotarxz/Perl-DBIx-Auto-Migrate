@@ -8,3 +8,5 @@
 	- Adding an example project using this code.
 0.5 Tue Dec 30 08:43:48 PM CET 2025
 	- DBD::Pg is needed for tests.
+0.6 Wed Dec 31 07:03:22 AM CET 2025
+	- Skipping tests if no postgresql

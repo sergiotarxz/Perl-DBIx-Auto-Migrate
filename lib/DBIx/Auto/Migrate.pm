@@ -1,6 +1,6 @@
 package DBIx::Auto::Migrate;
 
-our $VERSION = "0.5";
+our $VERSION = "0.6";
 
 use v5.16.3;
 use strict;
