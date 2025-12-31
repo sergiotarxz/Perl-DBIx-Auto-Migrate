@@ -1,10 +1,16 @@
+# NAME
+
 DBIx::Auto::Migrate - Wrap your database connections and automatically apply db migrations.
+
+# SYNOPSIS
 
     package MyCompany::DB;
     
     use v5.16.3;
     use strict;
     use warnings;
+
+    use DBIx::Auto::Migrate;
 
     finish_auto_migrate;
 
@@ -63,7 +69,7 @@ And elsewhere:
     my $dbh = MyCompany::DB->connect;
     my $dbh = MyCompany::DB->connect_cached;
 
-## DESCRIPTION
+# DESCRIPTION
 
 Sometimes is convenient to be able to make server or desktop programs that
 use a database with the ability to be automatically have their database
@@ -76,9 +82,9 @@ my way to apply database migrations defined in code in a extensible way.
 
 It is only possible to migrate forward so be careful.
 
-## SUBS TO IMPLEMENT IN YOUR OWN DATABASE WRAPPER
+# SUBS TO IMPLEMENT IN YOUR OWN DATABASE WRAPPER
 
-### migrations
+## migrations
 
     sub migrations {
            return (
@@ -101,7 +107,7 @@ It is only possible to migrate forward so be careful.
 Returns a list of migrations, creating a options table in the first migration is
 obligatory since it is internally used to keep track of the current migration number.
 
-### dsn
+## dsn
 
     sub dsn {
            return 'dbi:Pg:dbname=my_fancy_app_db';
@@ -109,19 +115,19 @@ obligatory since it is internally used to keep track of the current migration nu
 
 Returns a valid DSN for [DBI](https://metacpan.org/pod/DBI), you can use any logic to return this, even reading a database config file.
 
-### user
+## user
 
     sub user { 'mydbuser' }
 
 Returns a valid user for [DBI](https://metacpan.org/pod/DBI), you can use any logic to return this, even reading a database config file.
 
-### pass
+## pass
 
     sub pass { 'mypass' }
 
 Returns a valid password for [DBI](https://metacpan.org/pod/DBI), you can use any logic to return this, even reading a database config file.
 
-### extra
+## extra
 
     sub extra {
            {
@@ -132,22 +138,22 @@ Returns a valid password for [DBI](https://metacpan.org/pod/DBI), you can use an
 You can optionally implement this method to pass extra options to [DBI](https://metacpan.org/pod/DBI), the
 return must be a hashref or undef.
 
-## FINALIZING THE DATABASE WRAPPER CLASS
+# FINALIZING THE DATABASE WRAPPER CLASS
 
     finish_auto_migrate();
 
 Calling this method will ensure your class is completely ready to be used,
 you can do it at any point if every prerequisite is available.
 
-## METHODS AUTOMATICALLY AVAILABLE IN YOUR WRAPPER
+# METHODS AUTOMATICALLY AVAILABLE IN YOUR WRAPPER
 
-### connect
+## connect
 
     my $dbh = MyCompany::DB->connect;
 
 Same as [DBI](https://metacpan.org/pod/DBI)::`connect` but without taking any argument.
 
-### connect\_cached
+## connect\_cached
 
     my $dbh = MyCompany::DB->connect_cached;
 
@@ -175,15 +181,3 @@ Copyright © Sergio Iglesias (2025)
 
 This library is free software and may be distributed under the same terms
 as perl itself. See [https://dev.perl.org/licenses/](https://dev.perl.org/licenses/).
-
-# POD ERRORS
-
-Hey! **The above document had some coding errors, which are explained below:**
-
-- Around line 134:
-
-    Unknown directive: =head
-
-- Around line 138:
-
-    Unknown directive: =head
