@@ -1,6 +1,6 @@
 package DBIx::Auto::Migrate;
 
-our $VERSION = "0.2";
+our $VERSION = "0.3";
 
 use v5.16.3;
 use strict;
@@ -264,8 +264,8 @@ Returns a valid password for L<DBI>, you can use any logic to return this, even 
 
  sub extra {
  	{
-		PrintError => 1,
-	}
+ 		PrintError => 1,
+ 	}
  }
 
 You can optionally implement this method to pass extra options to L<DBI>, the
