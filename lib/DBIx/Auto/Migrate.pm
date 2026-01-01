@@ -1,6 +1,6 @@
 package DBIx::Auto::Migrate;
 
-our $VERSION = "0.1";
+our $VERSION = "0.2";
 
 use v5.16.3;
 use strict;
@@ -131,17 +131,19 @@ EOF
 
 =encoding utf-8
 
-=head NAME
+=head1 NAME
 
 DBIx::Auto::Migrate - Wrap your database connections and automatically apply db migrations.
 
-=head SYNOPSIS
+=head1 SYNOPSIS
 
  package MyCompany::DB;
  
  use v5.16.3;
  use strict;
  use warnings;
+
+ use DBIx::Auto::Migrate;
 
  finish_auto_migrate;
 
@@ -200,7 +202,7 @@ And elsewhere:
  my $dbh = MyCompany::DB->connect;
  my $dbh = MyCompany::DB->connect_cached;
 
-=head2 DESCRIPTION
+=head1 DESCRIPTION
 
 Sometimes is convenient to be able to make server or desktop programs that
 use a database with the ability to be automatically have their database
@@ -213,9 +215,9 @@ my way to apply database migrations defined in code in a extensible way.
 
 It is only possible to migrate forward so be careful.
 
-=head2 SUBS TO IMPLEMENT IN YOUR OWN DATABASE WRAPPER
+=head1 SUBS TO IMPLEMENT IN YOUR OWN DATABASE WRAPPER
 
-=head3 migrations
+=head2 migrations
 
  sub migrations {
  	return (
@@ -238,7 +240,7 @@ It is only possible to migrate forward so be careful.
 Returns a list of migrations, creating a options table in the first migration is
 obligatory since it is internally used to keep track of the current migration number.
 
-=head3 dsn
+=head2 dsn
 
  sub dsn {
  	return 'dbi:Pg:dbname=my_fancy_app_db';
@@ -246,19 +248,19 @@ obligatory since it is internally used to keep track of the current migration nu
 
 Returns a valid DSN for L<DBI>, you can use any logic to return this, even reading a database config file.
 
-=head3 user
+=head2 user
 
  sub user { 'mydbuser' }
 
 Returns a valid user for L<DBI>, you can use any logic to return this, even reading a database config file.
 
-=head3 pass
+=head2 pass
 
  sub pass { 'mypass' }
 
 Returns a valid password for L<DBI>, you can use any logic to return this, even reading a database config file.
 
-=head3 extra
+=head2 extra
 
  sub extra {
  	{
@@ -269,22 +271,22 @@ Returns a valid password for L<DBI>, you can use any logic to return this, even 
 You can optionally implement this method to pass extra options to L<DBI>, the
 return must be a hashref or undef.
 
-=head2 FINALIZING THE DATABASE WRAPPER CLASS
+=head1 FINALIZING THE DATABASE WRAPPER CLASS
 
  finish_auto_migrate();
 
 Calling this method will ensure your class is completely ready to be used,
 you can do it at any point if every prerequisite is available.
 
-=head2 METHODS AUTOMATICALLY AVAILABLE IN YOUR WRAPPER
+=head1 METHODS AUTOMATICALLY AVAILABLE IN YOUR WRAPPER
 
-=head3 connect
+=head2 connect
 
  my $dbh = MyCompany::DB->connect;
 
 Same as L<DBI>::C<connect> but without taking any argument.
 
-=head3 connect_cached
+=head2 connect_cached
 
  my $dbh = MyCompany::DB->connect_cached;
 
