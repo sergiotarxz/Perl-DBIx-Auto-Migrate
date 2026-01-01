@@ -4,6 +4,8 @@ use warnings;
 use Test::More;
 use Test::PostgreSQL;
 use Test::Exception;
+eval { Test::PostgreSQL->new() }
+    or plan skip_all => $@;
 my $create_index = sub {
 	my ($table, $column) = @_;
 	if (!$table) {
